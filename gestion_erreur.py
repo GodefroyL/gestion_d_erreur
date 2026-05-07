@@ -2,9 +2,14 @@ import traceback
 import linecache
 from datetime import datetime
 
-def gestion_erreur(erreur: TypeError, dossier_rapport: str = ''):
+def gestion_erreur(erreur: TypeError, dossier_rapport: str = '.'):
+    """
+    Paramètres d'entrée:
+        erreur: erreur à reporter
+        dossier_rapport: dossier où enregistrer le rapport
+    """
     rapport = f"Rapport d'erreur dans l'execution du programme\n\nDate : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
-    tb = e.__traceback__
+    tb = erreur.__traceback__
     while tb.tb_next:
         tb = tb.tb_next
     error_frame = tb.tb_frame
